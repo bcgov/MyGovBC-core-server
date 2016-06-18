@@ -1,0 +1,23 @@
+{
+  "name": "profile",
+  "base": "Model",
+  "plural": "profile",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "headers": {
+      "type": "object"
+    }
+  },
+  "hidden": ["id"],
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
