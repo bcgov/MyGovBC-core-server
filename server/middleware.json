@@ -41,10 +41,21 @@
     }
   },
   "files": {
-    "loopback#static": {
-      "paths": ["/ext","/"],
-      "params": "$!../client/dist"
-    }
+    "loopback#static": [
+      {
+        "paths": [
+          "${clientRoot}",
+          "/"
+        ],
+        "params": "$!../client/dist"
+      },
+      {
+        "paths": [
+          "/ext/?*"
+        ],
+        "params": "$!../client/dist"
+      }
+    ]
   },
   "final": {
     "loopback#urlNotFound": {}
