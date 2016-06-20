@@ -1,5 +1,5 @@
 # myGov-core-server
-A loopback API server app with socket.io
+A loopback API server app scaffolded with `slc loopback`.
 
 ## Development
 
