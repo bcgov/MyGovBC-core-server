@@ -12,4 +12,4 @@ npm start
 ```
 
 ### Full stack
-Do the server-only setup, then follow [myGov-core-client readme](https://github.com/f-w/myGov-core-client).
+Do the server-only setup, then follow [myGov-core-client readme](https://github.com/f-w/myGov-core-client) to build dist (`npm run build`). If everything works, opening `http://localhost:9000/ext/` in browser should reveal myGov.
