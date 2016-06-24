@@ -1,8 +1,8 @@
 {
-  "name": "profile",
-  "plural": "profile",
+  "name": "authentication",
+  "plural": "authentication",
   "base": "Model",
-  "idInjection": false,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
@@ -16,6 +16,10 @@
     },
     "headers": {
       "type": "object"
+    },
+    "sid": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
