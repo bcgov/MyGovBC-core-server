@@ -31,9 +31,12 @@
     }
   },
   "session": {
-    "express-session":{
-      "params":{
-        "secret": "a5e00329-17c2-4eb9-8a32-deb7bdda48e1"
+    "express-session": {
+      "params": {
+        "secret": "a5e00329-17c2-4eb9-8a32-deb7bdda48e1",
+        "cookie": {
+          "httpOnly": false
+        }
       }
     }
   },
