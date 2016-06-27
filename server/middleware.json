@@ -45,7 +45,8 @@
   "routes": {
     "loopback#rest": {
       "paths": [
-        "${restApiRoot}"
+        "/ext/api",
+        "/api"
       ]
     }
   },

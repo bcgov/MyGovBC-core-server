@@ -21,6 +21,5 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {},
-  "http":{"path":"/ext/api/profile"}
+  "methods": {}
 }
