@@ -25,5 +25,6 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {},
+  "http":{"path":"/api/authentication"}
 }
