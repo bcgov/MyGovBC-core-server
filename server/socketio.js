@@ -6,10 +6,10 @@
 var cookie = require('cookie')
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
-  var sCookie = cookie.parse(socket.request.headers['cookie'])['connect.sid']
-  if(sCookie && module.exports.sockets[sCookie]){
-    delete module.exports.sockets[sCookie]
-  }
+  // var sCookie = cookie.parse(socket.request.headers['cookie'])['connect.sid']
+  // if(sCookie && module.exports.sockets[sCookie]){
+  //   delete module.exports.sockets[sCookie]
+  // }
 }
 
 // When the user connects.. perform this
