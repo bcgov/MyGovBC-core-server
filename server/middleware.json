@@ -63,7 +63,7 @@
         "paths": [
           "/ext/?*"
         ],
-        "params": "$!../client/dist"
+        "params": "$!../client/dist/index.html"
       }
     ]
   },
