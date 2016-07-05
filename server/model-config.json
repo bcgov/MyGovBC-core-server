@@ -20,5 +20,9 @@
   "authentication": {
     "dataSource": null,
     "public": true
+  },
+  "service": {
+    "dataSource": "db",
+    "public": true
   }
 }
