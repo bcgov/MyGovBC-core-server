@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "service": 2
+  },
+  "models": {
+    "service": {
+      "1": "{\"name\":\"Education\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"education\",\"id\":1}"
+    }
+  }
+}
