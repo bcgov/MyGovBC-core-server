@@ -3,6 +3,14 @@ A loopback API server app scaffolded with `slc loopback`.
 
 ## Development
 
+## Registering Widget
+
+The Widget requires registration to have meta data about the widget so we can display it on the main page and dynamically
+route to it.  Eventually we'll have a UI and easier setup but for now, you have to register it in one of two ways:
+
+1. Our API explorer (currently broken)
+2. Editing `db.json` by adding a new entry for service.
+
 ### Server-only
 ```
 git clone https://github.com/f-w/myGov-core-server.git
