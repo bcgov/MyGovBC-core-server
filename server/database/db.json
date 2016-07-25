@@ -4,7 +4,7 @@
   },
   "models": {
     "service": {
-      "1": "{\"name\":\"Education\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"education\",\"id\":1}",
+      "1": "{\"name\":\"Education\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"education\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"id\":1}",
       "3": "{\"name\":\"My Shiny New Widget\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"sampleinfo\",\"id\":3}"
     }
   }

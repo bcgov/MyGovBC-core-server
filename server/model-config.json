@@ -22,7 +22,7 @@
     "public": true
   },
   "service": {
-    "dataSource": "db",
+    "dataSource": "imdb",
     "public": true
   }
 }
