@@ -25,6 +25,11 @@
     },
     "notificationRestApiUrl": {
       "type": "string"
+    },
+    "allowedNotificationChannels": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],

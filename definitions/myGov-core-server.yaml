@@ -1,0 +1,367 @@
+swagger: '2.0'
+
+info:
+  x-ibm-name: mygov-core-server
+  version: 1.0.0
+  title: myGov-core-server
+
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+securityDefinitions:
+ clientIdHeader:
+   type: apiKey
+   in: header
+   name: X-IBM-Client-Id
+ clientSecretHeader:
+   in: "header"
+   name: "X-IBM-Client-Secret"
+   type: "apiKey"
+
+
+security:
+ -
+   clientIdHeader: []
+   clientSecretHeader: []
+
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
+
+paths:
+  /profile:
+    get:
+      tags:
+        - profile
+      operationId: profile.get
+      parameters: []
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/profile'
+      deprecated: false
+  /authentication:
+    post:
+      tags:
+        - authentication
+      operationId: authentication.post
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/authentication'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/authentication'
+      deprecated: false
+  /service:
+    post:
+      tags:
+        - service
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: service.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/service'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+    put:
+      tags:
+        - service
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: service.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/service'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+    get:
+      tags:
+        - service
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: service.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/service'
+      deprecated: false
+  '/service/{id}/exists':
+    get:
+      tags:
+        - service
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'service.exists__get_service_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/service/{id}':
+    head:
+      tags:
+        - service
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'service.exists__head_service_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - service
+      summary: Find a model instance by id from the data source.
+      operationId: service.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+    delete:
+      tags:
+        - service
+      summary: Delete a model instance by id from the data source.
+      operationId: service.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - service
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: service.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/service'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+  /service/findOne:
+    get:
+      tags:
+        - service
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: service.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+  /service/update:
+    post:
+      tags:
+        - service
+      summary: Update instances of the model matched by where from the data source.
+      operationId: service.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/service'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /service/count:
+    get:
+      tags:
+        - service
+      summary: Count instances of the model matched by where from the data source.
+      operationId: service.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+
+
+definitions:
+  profile:
+    properties:
+      name:
+        type: string
+      headers:
+        type: object
+    required:
+      - name
+    additionalProperties: false
+  authentication:
+    properties:
+      name:
+        type: string
+      headers:
+        type: object
+      sid:
+        type: string
+    required:
+      - name
+      - sid
+    additionalProperties: false
+  service:
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      logoUrl:
+        type: string
+      routeName:
+        type: string
+      notificationRestApiUrl:
+        type: string
+      allowedNotificationChannels:
+        type: array
+        items:
+          type: string
+      id:
+        type: number
+        format: double
+    required:
+      - name
+      - description
+      - logoUrl
+      - routeName
+    additionalProperties: false
+  x-any:
+    properties: {}
+
