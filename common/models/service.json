@@ -26,6 +26,9 @@
     "notificationRestApiUrl": {
       "type": "string"
     },
+    "notificationSubscriptionRestApiUrl": {
+      "type": "string"
+    },
     "allowedNotificationChannels": {
       "type": [
         "string"
