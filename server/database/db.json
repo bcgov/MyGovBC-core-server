@@ -4,8 +4,8 @@
   },
   "models": {
     "service": {
-      "1": "{\"name\":\"Education\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"education\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptins\",\"allowedNotificationChannels\":[\"email\",\"sms\"],\"id\":1}",
-      "2": "{\"name\":\"My Shiny New Widget\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"sampleinfo\",\"notificationRestApiUrl\":\"http://localhost:3001/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptins\",\"allowedNotificationChannels\":[\"email\"],\"id\":2}"
+      "1": "{\"name\":\"Education\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"education\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptions\",\"allowedNotificationChannels\":[\"email\",\"sms\"],\"id\":1}",
+      "2": "{\"name\":\"My Shiny New Widget\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"sampleinfo\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptions\",\"allowedNotificationChannels\":[\"email\"],\"id\":2}"
     }
   }
 }
