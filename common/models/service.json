@@ -33,8 +33,14 @@
       "type": [
         "string"
       ]
+    },
+    "notificationServerPublicRSAKey": {
+      "type": "string"
     }
   },
+  "hidden": [
+    "notificationServerPublicRSAKey"
+  ],
   "validations": [],
   "relations": {},
   "acls": [],
