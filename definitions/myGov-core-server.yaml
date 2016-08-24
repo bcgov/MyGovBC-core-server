@@ -263,6 +263,482 @@ paths:
                 type: number
                 format: double
       deprecated: false
+  '/registrations/{id}/services/{fk}':
+    get:
+      tags:
+        - registration
+      summary: Find a related item by id for services.
+      operationId: registration.prototype.__findById__services
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for services
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+    delete:
+      tags:
+        - registration
+      summary: Delete a related item by id for services.
+      operationId: registration.prototype.__destroyById__services
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for services
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - registration
+      summary: Update a related item by id for services.
+      operationId: registration.prototype.__updateById__services
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for services
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/service'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+  '/registrations/{id}/services/rel/{fk}':
+    put:
+      tags:
+        - registration
+      summary: Add a related item by id for services.
+      operationId: registration.prototype.__link__services
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for services
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+    delete:
+      tags:
+        - registration
+      summary: Remove the services relation to an item by id.
+      operationId: registration.prototype.__unlink__services
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for services
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    head:
+      tags:
+        - registration
+      summary: Check the existence of services relation to an item by id.
+      operationId: registration.prototype.__exists__services
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for services
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: boolean
+      deprecated: false
+  '/registrations/{id}/services':
+    get:
+      tags:
+        - registration
+      summary: Queries services of registration.
+      operationId: registration.prototype.__get__services
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/service'
+      deprecated: false
+    post:
+      tags:
+        - registration
+      summary: Creates a new instance in services of this model.
+      operationId: registration.prototype.__create__services
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/service'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/service'
+      deprecated: false
+    delete:
+      tags:
+        - registration
+      summary: Deletes all services of this model.
+      operationId: registration.prototype.__delete__services
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/registrations/{id}/services/count':
+    get:
+      tags:
+        - registration
+      summary: Counts services of registration.
+      operationId: registration.prototype.__count__services
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /registrations:
+    post:
+      tags:
+        - registration
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: registration.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/registration'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/registration'
+      deprecated: false
+    put:
+      tags:
+        - registration
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: registration.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/registration'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/registration'
+      deprecated: false
+    get:
+      tags:
+        - registration
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: registration.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/registration'
+      deprecated: false
+  '/registrations/{id}/exists':
+    get:
+      tags:
+        - registration
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'registration.exists__get_registrations_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/registrations/{id}':
+    head:
+      tags:
+        - registration
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'registration.exists__head_registrations_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - registration
+      summary: Find a model instance by id from the data source.
+      operationId: registration.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/registration'
+      deprecated: false
+    delete:
+      tags:
+        - registration
+      summary: Delete a model instance by id from the data source.
+      operationId: registration.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - registration
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: registration.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/registration'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/registration'
+      deprecated: false
+  /registrations/findOne:
+    get:
+      tags:
+        - registration
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: registration.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/registration'
+      deprecated: false
+  /registrations/update:
+    post:
+      tags:
+        - registration
+      summary: Update instances of the model matched by where from the data source.
+      operationId: registration.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/registration'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /registrations/count:
+    get:
+      tags:
+        - registration
+      summary: Count instances of the model matched by where from the data source.
+      operationId: registration.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
 definitions:
   profile:
     properties:
@@ -297,12 +773,12 @@ definitions:
         type: string
       notificationRestApiUrl:
         type: string
+      notificationSubscriptionRestApiUrl:
+        type: string
       allowedNotificationChannels:
         type: array
         items:
           type: string
-      notificationSubscriptionRestApiUrl:
-        type: string
       id:
         type: number
         format: double
@@ -314,6 +790,21 @@ definitions:
     additionalProperties: false
   x-any:
     properties: {}
+  registration:
+    properties:
+      userId:
+        type: string
+      id:
+        type: number
+        format: double
+      serviceIds:
+        type: array
+        items:
+          type: number
+          format: double
+    required:
+      - userId
+    additionalProperties: false
 swagger: '2.0'
 info:
   x-ibm-name: mygov-core-server
