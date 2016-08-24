@@ -24,5 +24,9 @@
   "service": {
     "dataSource": "imdb",
     "public": true
+  },
+  "registration": {
+    "dataSource": "imdb",
+    "public": true
   }
 }

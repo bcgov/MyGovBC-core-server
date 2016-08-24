@@ -6,6 +6,9 @@
   "options": {
     "validateUpsert": true
   },
+  "hidden": [
+    "notificationServerPublicRSAKey"
+  ],
   "properties": {
     "name": {
       "type": "string",
@@ -38,9 +41,6 @@
       "type": "string"
     }
   },
-  "hidden": [
-    "notificationServerPublicRSAKey"
-  ],
   "validations": [],
   "relations": {},
   "acls": [],
