@@ -54,6 +54,28 @@ module.exports = function (Profile) {
       if (err) {
         return callback(err, null)
       }
+
+      var updateInstanceService = function (instance, serviceId) {
+        switch (service.operation) {
+          case 'POST':
+            if (instance.registeredServices.indexOf(serviceId.toString()) < 0) {
+              instance.registeredServices.push(serviceId)
+            }
+            break
+          case 'DELETE':
+            _.remove(instance.registeredServices, function (e, i) {
+              return e == serviceId
+            })
+            break
+        }
+        instance.save(function (err, data) {
+          callback(err, data)
+        })
+      }
+      if (service.id) {
+        updateInstanceService(instance, service.id)
+        return
+      }
       Profile.app.models.Service.findOne({where: {name: service.name}}, function (err, data) {
         if (err) {
           return callback(err, null)
@@ -61,22 +83,7 @@ module.exports = function (Profile) {
         if (!data) {
           return callback('invalid serivce name', null)
         }
-
-        switch (service.operation) {
-          case 'POST':
-            if (instance.registeredServices.indexOf(data.id.toString()) < 0) {
-              instance.registeredServices.push(data.id)
-            }
-            break
-          case 'DELETE':
-            _.remove(instance.registeredServices, function (e, i) {
-              return e == data.id
-            })
-            break
-        }
-        instance.save(function (err, data) {
-          callback(err, data)
-        })
+        updateInstanceService(instance, data.id)
       })
     })
   }
