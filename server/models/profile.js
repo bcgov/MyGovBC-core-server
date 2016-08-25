@@ -1,3 +1,4 @@
+var _ = require('lodash')
 module.exports = function (Profile) {
   Profile.disableRemoteMethod('findOne', true)
   Profile.disableRemoteMethod('findById', true)
@@ -46,15 +47,37 @@ module.exports = function (Profile) {
     }
   })
 
-  /**
-   * add a service to current user
-   * @param {string} serviceName service name
-   * @param {Function(Error, object)} callback
-   */
+  Profile.services = function (ctx, service, callback) {
+    var u = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname') || 'unknown'
+    service.operation = ctx.req.method
+    Profile.findOrCreate({userId: u}, {userId: u, registeredServices: []}, function (err, instance, created) {
+      if (err) {
+        return callback(err, null)
+      }
+      Profile.app.models.Service.findOne({name: service.name}, function (err, data) {
+        if (err) {
+          return callback(err, null)
+        }
+        if (!data) {
+          return callback('invalid serivce name', null)
+        }
 
-  Profile.addService = function (service, callback) {
-    var data
-    // TODO
-    callback(null, data)
+        switch (service.operation) {
+          case 'POST':
+            if (instance.registeredServices.indexOf(data.id.toString()) < 0) {
+              instance.registeredServices.push(data.id)
+            }
+            break
+          case 'DELETE':
+            _.remove(instance.registeredServices, function (e, i) {
+              return e == data.id
+            })
+            break
+        }
+        instance.save(function (err, data) {
+          callback(err, data)
+        })
+      })
+    })
   }
 }

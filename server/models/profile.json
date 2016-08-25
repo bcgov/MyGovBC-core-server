@@ -21,9 +21,18 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "addService": {
+    "services": {
       "isStatic": true,
       "accepts": [
+        {
+          "arg": "ctx",
+          "type": "object",
+          "required": true,
+          "description": "context",
+          "http": {
+            "source": "context"
+          }
+        },
         {
           "arg": "service",
           "type": "object",
@@ -45,8 +54,12 @@
       "description": "add a service to current user",
       "http": [
         {
-          "path": "/addService",
-          "verb": "put"
+          "path": "/services",
+          "verb": "post"
+        },
+        {
+          "path": "/services",
+          "verb": "delete"
         }
       ]
     }
