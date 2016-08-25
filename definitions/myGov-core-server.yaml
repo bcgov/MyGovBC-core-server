@@ -264,24 +264,6 @@ paths:
                 format: double
       deprecated: false
   /registrations:
-    post:
-      tags:
-        - registration
-      summary: Create a new instance of the model and persist it into the data source.
-      operationId: registration.create
-      parameters:
-        - name: data
-          in: body
-          description: Model instance data
-          required: false
-          schema:
-            $ref: '#/definitions/registration'
-      responses:
-        '200':
-          description: Request was successful
-          schema:
-            $ref: '#/definitions/registration'
-      deprecated: false
     get:
       tags:
         - registration
@@ -326,6 +308,27 @@ paths:
           description: Request was successful
           schema:
             $ref: '#/definitions/registration'
+      deprecated: false
+  /registrations/addService:
+    put:
+      tags:
+        - registration
+      summary: add a service to current user
+      operationId: registration.addService
+      parameters:
+        - name: serviceName
+          in: body
+          description: service name
+          required: true
+          schema:
+            description: service name
+            type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: subscription data
+            type: object
       deprecated: false
 definitions:
   profile:

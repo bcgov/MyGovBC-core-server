@@ -19,5 +19,35 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "addService": {
+      "isStatic": true,
+      "accepts": [
+        {
+          "arg": "service",
+          "type": "object",
+          "required": true,
+          "description": "service data",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object",
+          "root": true,
+          "description": "subscription data"
+        }
+      ],
+      "description": "add a service to current user",
+      "http": [
+        {
+          "path": "/addService",
+          "verb": "put"
+        }
+      ]
+    }
+  }
 }

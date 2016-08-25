@@ -45,4 +45,18 @@ module.exports = function (Registration) {
       next()
     }
   })
+
+  /**
+   * add a service to current user
+   * @param {string} serviceName service name
+   * @param {Function(Error, object)} callback
+   */
+
+  Registration.addService = function (service, callback) {
+    var data;
+    // TODO
+    callback(null, data);
+  };
+
+
 }
