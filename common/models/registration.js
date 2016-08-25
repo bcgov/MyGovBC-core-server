@@ -18,6 +18,19 @@ module.exports = function (Registration) {
     next()
   })
 
+  Registration.afterRemote('find', function (ctx, res, next) {
+    var u = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname') || 'unknown'
+    if (u && res.length === 0) {
+      Registration.create({userId: u, serviceIds: []}, function (err, instance) {
+        res.push(instance)
+        next()
+      })
+    }
+    else {
+      next()
+    }
+  })
+
   Registration.observe('access', function (ctx, next) {
     var httpCtx = require('loopback').getCurrentContext();
     ctx.query.where = ctx.query.where || {}

@@ -1,12 +1,15 @@
 {
   "ids": {
-    "service": 4
+    "service": 4,
+    "registration": 1
   },
   "models": {
     "service": {
       "1": "{\"name\":\"Education\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"education\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptions\",\"allowedNotificationChannels\":[\"email\",\"sms\"],\"id\":1}",
       "2": "{\"name\":\"My Shiny New Widget\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"sampleinfo\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptions\",\"allowedNotificationChannels\":[\"email\"],\"id\":2}",
       "3": "{\"name\":\"FoodSafe\",\"description\":\"Get Certified or Check on Certificate Status\",\"logoUrl\":\"todo URL\",\"routeName\":\"foodsafe\",\"id\":3}"
+    },
+    "registration": {
     }
   }
 }
