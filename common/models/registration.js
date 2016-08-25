@@ -18,7 +18,6 @@ module.exports = function (Registration) {
     next()
   })
 
-
   Registration.observe('access', function (ctx, next) {
     var httpCtx = require('loopback').getCurrentContext();
     ctx.query.where = ctx.query.where || {}
@@ -26,6 +25,19 @@ module.exports = function (Registration) {
     if (u) {
       ctx.query.where = ctx.query.where || {}
       ctx.query.where.userId = u
+    }
+    next()
+  })
+
+  Registration.beforeRemote('prototype.updateAttributes', function (ctx, instance, next) {
+    var currUser = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname')
+    if (currUser) {
+      ctx.args.data.userId = currUser
+      if (currUser !== ctx.instance.userId) {
+        var error = new Error('Unauthorized')
+        error.status = 401
+        return next(error)
+      }
     }
     next()
   })
