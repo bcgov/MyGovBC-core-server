@@ -9,20 +9,15 @@
     "userId": {
       "type": "string",
       "required": true
+    },
+    "serviceIds": {
+      "type": [
+        "string"
+      ]
     }
   },
   "validations": [],
-  "relations": {
-    "services": {
-      "type": "referencesMany",
-      "model": "service",
-      "foreignKey": "serviceIds",
-      "options": {
-        "validate": true,
-        "forceId": false
-      }
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }
