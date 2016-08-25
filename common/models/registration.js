@@ -7,20 +7,11 @@ module.exports = function (Registration) {
   Registration.disableRemoteMethod('count', true)
   Registration.disableRemoteMethod('upsert', true)
   Registration.disableRemoteMethod('deleteById', true)
-
-  Registration.beforeRemote('create', function () {
-    var ctx = arguments[0]
-    var next = arguments[arguments.length - 1]
-    var u = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname')
-    if (u) {
-      ctx.args.data.userId = u
-    }
-    next()
-  })
+  Registration.disableRemoteMethod('create', true)
 
   Registration.afterRemote('find', function (ctx, res, next) {
     var u = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname') || 'unknown'
-    if (u && res.length === 0) {
+    if (res.length === 0) {
       Registration.create({userId: u, serviceIds: []}, function (err, instance) {
         res.push(instance)
         next()
@@ -43,15 +34,15 @@ module.exports = function (Registration) {
   })
 
   Registration.beforeRemote('prototype.updateAttributes', function (ctx, instance, next) {
-    var currUser = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname')
-    if (currUser) {
-      ctx.args.data.userId = currUser
-      if (currUser !== ctx.instance.userId) {
-        var error = new Error('Unauthorized')
-        error.status = 401
-        return next(error)
-      }
+    var u = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname') || 'unknown'
+    ctx.args.data.userId = u
+    if (u !== ctx.instance.userId) {
+      var error = new Error('Unauthorized')
+      error.status = 401
+      next(error)
     }
-    next()
+    else {
+      next()
+    }
   })
 }
