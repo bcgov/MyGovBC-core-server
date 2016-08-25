@@ -50,11 +50,11 @@ module.exports = function (Profile) {
   Profile.services = function (ctx, service, callback) {
     var u = ctx.req.get('sm_user') || ctx.req.get('smgov_userdisplayname') || 'unknown'
     service.operation = ctx.req.method
-    Profile.findOrCreate({userId: u}, {userId: u, registeredServices: []}, function (err, instance, created) {
+    Profile.findOrCreate({where: {userId: u}}, {userId: u, registeredServices: []}, function (err, instance, created) {
       if (err) {
         return callback(err, null)
       }
-      Profile.app.models.Service.findOne({name: service.name}, function (err, data) {
+      Profile.app.models.Service.findOne({where: {name: service.name}}, function (err, data) {
         if (err) {
           return callback(err, null)
         }
