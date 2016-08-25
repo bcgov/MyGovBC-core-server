@@ -1,7 +1,7 @@
 {
   "ids": {
     "service": 4,
-    "registration": 1
+    "profile": 1
   },
   "models": {
     "service": {
@@ -9,7 +9,7 @@
       "2": "{\"name\":\"My Shiny New Widget\",\"description\":\"todo description\",\"logoUrl\":\"todo URL\",\"routeName\":\"sampleinfo\",\"notificationRestApiUrl\":\"http://localhost:3000/ext/api/notifications\",\"notificationSubscriptionRestApiUrl\":\"http://localhost:3000/ext/api/subscriptions\",\"allowedNotificationChannels\":[\"email\"],\"id\":2}",
       "3": "{\"name\":\"FoodSafe\",\"description\":\"Get Certified or Check on Certificate Status\",\"logoUrl\":\"todo URL\",\"routeName\":\"foodsafe\",\"id\":3}"
     },
-    "registration": {
+    "profile": {
     }
   }
 }

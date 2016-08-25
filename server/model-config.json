@@ -13,10 +13,6 @@
       "./mixins"
     ]
   },
-  "profile": {
-    "dataSource": null,
-    "public": true
-  },
   "authentication": {
     "dataSource": null,
     "public": true
@@ -25,7 +21,7 @@
     "dataSource": "imdb",
     "public": true
   },
-  "registration": {
+  "profile": {
     "dataSource": "imdb",
     "public": true
   }
