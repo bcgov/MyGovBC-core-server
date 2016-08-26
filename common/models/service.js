@@ -7,6 +7,15 @@ module.exports = function (Service) {
   Service.disableRemoteMethod('count', true)
   Service.disableRemoteMethod('upsert', true)
 
+  Service.observe('access', function () {
+    var ctx = arguments[0]
+    var next = arguments[arguments.length - 1]
+    ctx.query = ctx.query || {}
+    // todo: hide notification server apikey field
+    //ctx.query.fields = []
+    next()
+  })
+
   Service.beforeRemote('**', function () {
     var ctx = arguments[0]
     var next = arguments[arguments.length - 1]
