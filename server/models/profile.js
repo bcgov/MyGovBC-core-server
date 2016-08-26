@@ -54,7 +54,12 @@ module.exports = function (Profile) {
       if (err) {
         return callback(err, null)
       }
-
+      if (service.operation === 'GET') {
+        Profile.app.models.Service.find({where: {id: {inq: instance.registeredServices}}}, function (err, data) {
+          return callback(err, data)
+        })
+        return
+      }
       var updateInstanceService = function (instance, serviceId) {
         switch (service.operation) {
           case 'POST':

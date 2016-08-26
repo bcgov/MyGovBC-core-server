@@ -36,7 +36,6 @@
         {
           "arg": "service",
           "type": "object",
-          "required": true,
           "description": "service data",
           "http": {
             "source": "body"
@@ -51,7 +50,7 @@
           "description": "subscription data"
         }
       ],
-      "description": "add a service to current user",
+      "description": "manage registered services of current user",
       "http": [
         {
           "path": "/services",
@@ -60,6 +59,10 @@
         {
           "path": "/services",
           "verb": "delete"
+        },
+        {
+          "path": "/services",
+          "verb": "get"
         }
       ]
     }
