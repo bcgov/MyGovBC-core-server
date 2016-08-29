@@ -1,4 +1,4 @@
-# myGov-core-server
+# MyGovBC-core-server
 A loopback API server app scaffolded with `slc loopback`.
 
 ## Development
@@ -8,19 +8,19 @@ A loopback API server app scaffolded with `slc loopback`.
 The Widget requires registration to have meta data about the widget so we can display it on the main page and dynamically
 route to it.  Eventually we'll have a UI and easier setup but for now, you have to register it in one of two ways:
 
-1. Our API explorer (currently broken)
+1. Our API explorer
 2. Editing `db.json` by adding a new entry for service.
 
 ### Server-only
 ```
-git clone https://github.com/f-w/myGov-core-server.git
-cd myGov-core-server
+git clone https://github.com/bcgov/MyGovBC-core-server.git
+cd MyGovBC-core-server
 npm install
 npm start
 ```
 
 ### Full stack
-Do the server-only setup, then follow [myGov-core-client readme](https://github.com/f-w/myGov-core-client) to build dist (`npm run build`). If everything works, opening [http://localhost:9000/ext/](http://localhost:9000/ext/) in browser should reveal myGov.
+Do the server-only setup, then follow [MyGovBC-core-client readme](https://github.com/bcgov/MyGovBC-core-client) to build dist (`npm run build`). If everything works, opening [http://localhost:9000/ext/](http://localhost:9000/ext/) in browser should reveal MyGovBC.
 
 ## License
 
