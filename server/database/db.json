@@ -1,7 +1,7 @@
 {
   "ids": {
     "service": 4,
-    "profile": 1
+    "profile": 2
   },
   "models": {
     "service": {
@@ -10,6 +10,7 @@
       "3": "{\"name\":\"FoodSafe\",\"description\":\"Get Certified or Check on Certificate Status\",\"logoUrl\":\"todo URL\",\"routeName\":\"foodsafe\",\"id\":3}"
     },
     "profile": {
+      "1": "{\"userId\":\"unknown\",\"registeredServices\":[],\"id\":1}"
     }
   }
 }
